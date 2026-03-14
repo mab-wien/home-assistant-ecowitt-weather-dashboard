@@ -8,6 +8,12 @@ It is designed to be:
 - clean enough for GitHub publication
 - ready for extra Ecowitt sensors such as soil moisture, pool water, shaft/pump sensors, and radar/windrose views
 
+## DEMO
+
+![Home Assistant Dashboard - Ecowitt wS90 Weather](demo/demo.jpg "Home Assistant Dashboard - Ecowitt wS90 Weather")
+
+![Home Assistant Dashboard Rain - Ecowitt wS90 Weather](demo/rain.jpg "Home Assistant Dashboard - Ecowitt wS90 Weather Rain")
+
 ## Features
 
 - Main weather dashboard for daily use
