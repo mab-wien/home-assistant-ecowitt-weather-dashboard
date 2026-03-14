@@ -1,0 +1,515 @@
+ytitle: Wetterstation
+views:
+  - title: Wetter
+    path: wetter
+    icon: mdi:weather-partly-cloudy
+    cards:
+      - type: custom:mushroom-title-card
+        title: Ecowitt Wetterstation
+        subtitle: WS90 / Ecowitt Local
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            entity: sensor.ecowitt_pressure_relative
+            name: Relativdruck
+            min: 950
+            max: 1050
+            needle: true
+          - type: gauge
+            entity: sensor.ecowitt_uv_index_10XXX
+            name: UV Index
+            min: 0
+            max: 12
+            needle: true
+      - type: grid
+        title: Außenbereich / Wetter
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_outdoor_temp_10XXX
+            primary: WS90 außen
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.XXXXesphomewp_outdoor_temperature
+            primary: Wärmepumpe außen
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:heat-pump
+            icon_color: teal
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_temperature_indoor
+            primary: Gartenhütte
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:home-thermometer-outline
+            icon_color: brown
+          - type: custom:mushroom-template-card
+            entity: sensor.XXXX_thm_XXXXXXX79_temperature
+            primary: Zählerschrank
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:meter-electric
+            icon_color: orange
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_outdoor_humidity_10XXX
+            primary: Außenfeuchte
+            secondary: '{{ states(entity) }} %'
+            icon: mdi:water-percent
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_dewpoint_10XXX
+            primary: Taupunkt
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer-water
+            icon_color: cyan
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_sensor_chY
+            primary: Gefühlt wie
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer-lines
+            icon_color: teal
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_pressure_relative
+            primary: Relativdruck
+            secondary: '{{ states(entity) }} hPa'
+            icon: mdi:gauge-full
+            icon_color: indigo
+      - type: grid
+        title: Wind
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_wind_speed_10XXX
+            primary: Windgeschwindigkeit
+            secondary: '{{ states(entity) }} km/h'
+            icon: mdi:weather-windy
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_wind_gust_10XXX
+            primary: Windböe
+            secondary: '{{ states(entity) }} km/h'
+            icon: mdi:weather-windy-variant
+            icon_color: deep-orange
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_max_daily_gust_10XXX
+            primary: Max. Tagesböe
+            secondary: '{{ states(entity) }} km/h'
+            icon: mdi:wind-power
+            icon_color: orange
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_wind_direction_10XXX
+            primary: Windrichtung
+            secondary: '{{ states(entity) }}°'
+            icon: mdi:compass
+            icon_color: indigo
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_wind_direction_avg_10XXX
+            primary: Windrichtung Ø
+            secondary: '{{ states(entity) }}°'
+            icon: mdi:compass-rose
+            icon_color: purple
+      - type: grid
+        title: Regen
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_rain_rate_10XXX
+            primary: Regenrate
+            secondary: '{{ states(entity) }} mm/h'
+            icon: mdi:weather-pouring
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_rain_event_10XXX
+            primary: Regenereignis
+            secondary: '{{ states(entity) }} mm'
+            icon: mdi:weather-rainy
+            icon_color: cyan
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_24h_rain_10XXX
+            primary: 24h Regen
+            secondary: '{{ states(entity) }} mm'
+            icon: mdi:clock-outline
+            icon_color: light-blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_daily_rain_10XXX
+            primary: Regen heute
+            secondary: '{{ states(entity) }} mm'
+            icon: mdi:calendar-today
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_weekly_rain_10XXX
+            primary: Regen Woche
+            secondary: '{{ states(entity) }} mm'
+            icon: mdi:calendar-week
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_monthly_rain_10XXX
+            primary: Regen Monat
+            secondary: '{{ states(entity) }} mm'
+            icon: mdi:calendar-month
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_yearly_rain_10XXX
+            primary: Regen Jahr
+            secondary: '{{ states(entity) }} mm'
+            icon: mdi:calendar-range
+            icon_color: blue
+      - type: grid
+        title: Sonne / Licht / UV
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_uv_index_10XXX
+            primary: UV Index
+            secondary: '{{ states(entity) }}'
+            icon: mdi:weather-sunny-alert
+            icon_color: amber
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_solar_radiation_10XXX
+            primary: Solarstrahlung
+            secondary: '{{ states(entity) }} W/m²'
+            icon: mdi:white-balance-sunny
+            icon_color: yellow
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_solar_lux_10XXX
+            primary: Helligkeit
+            secondary: '{{ states(entity) }} lx'
+            icon: mdi:brightness-6
+            icon_color: orange
+      - type: custom:horizon-card
+        title: Sonne & Mond
+        moon: true
+        refresh_period: 60
+        southern_flip: false
+        fields:
+          sunrise: true
+          sunset: true
+          dawn: true
+          noon: true
+          dusk: true
+          azimuth: true
+          sun_azimuth: true
+          moon_azimuth: true
+          elevation: true
+          sun_elevation: true
+          moon_elevation: true
+          moonrise: true
+          moonset: true
+          moon_phase: true
+      - type: grid
+        title: Gebäude / Innen
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.thm_62XXXXX71
+            primary: Keller
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer-chevron-down
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.thm_XXXXX7317
+            primary: Erdgeschoss
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:home-floor-0
+            icon_color: green
+          - type: custom:mushroom-template-card
+            entity: sensor.thm_62XXXXXXX
+            primary: Obergeschoss
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:home-floor-1
+            icon_color: amber
+      - type: grid
+        title: Zusatzsensoren
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_soil_moisture_f1XXX
+            primary: Bodenfeuchte
+            secondary: '{{ states(entity) }} %'
+            icon: mdi:sprout
+            icon_color: green
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_temperature_fx
+            primary: Brunnenschacht Temperatur
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_humidity_fx
+            primary: Brunnenschacht Feuchte
+            secondary: '{{ states(entity) }} %'
+            icon: mdi:water-percent
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_temperature_cX
+            primary: Poolpumpe Temperatur
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer
+            icon_color: teal
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_humidity_cX
+            primary: Poolpumpe Feuchte
+            secondary: '{{ states(entity) }} %'
+            icon: mdi:water-percent
+            icon_color: teal
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_tf_7aef
+            primary: Poolwasser Temperatur
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:pool-thermometer
+            icon_color: cyan
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_battery_7aef
+            primary: Poolwasser Batterie
+            secondary: '{{ states(entity) }} %'
+            icon: mdi:battery
+            icon_color: orange
+      - type: grid
+        title: Gateway / Sensorstatus
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: binary_sensor.ecowitt_gateway_unknown_online
+            primary: Gateway
+            secondary: >
+              {% if is_state(entity, 'on') %} Online {% else %} Offline {% endif
+              %}
+            icon: mdi:lan-connect
+            icon_color: |
+              {% if is_state(entity, 'on') %} green {% else %} red {% endif %}
+          - type: custom:mushroom-template-card
+            entity: binary_sensor.ecowitt_sensor_10XXX_online
+            primary: Sensor WS90
+            secondary: >
+              {% if is_state(entity, 'on') %} Online {% else %} Offline {% endif
+              %}
+            icon: mdi:access-point-check
+            icon_color: |
+              {% if is_state(entity, 'on') %} green {% else %} red {% endif %}
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_humidity_humidityin
+            primary: Feuchte Gartenhütte
+            secondary: '{{ states(entity) }} %'
+            icon: mdi:water-percent
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_pressure_absolute
+            primary: Absolutdruck
+            secondary: '{{ states(entity) }} hPa'
+            icon: mdi:gauge
+            icon_color: teal
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_sensor_chX
+            primary: VPD
+            secondary: '{{ states(entity) }} kPa'
+            icon: mdi:chart-bell-curve
+            icon_color: purple
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_battery_10XXX
+            primary: Batterie WS90
+            secondary: '{{ states(entity) }} %'
+            icon: mdi:battery
+            icon_color: green
+      - type: history-graph
+        title: Windverlauf 24h
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - entity: sensor.ecowitt_wind_speed_10XXX
+            name: Wind
+          - entity: sensor.ecowitt_wind_gust_10XXX
+            name: Böe
+          - entity: sensor.ecowitt_max_daily_gust_10XXX
+            name: Max Tagesböe
+      - type: history-graph
+        title: Regenverlauf 24h
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - entity: sensor.ecowitt_rain_rate_10XXX
+            name: Regenrate
+          - entity: sensor.ecowitt_rain_event_10XXX
+            name: Regenereignis
+          - entity: sensor.ecowitt_daily_rain_10XXX
+            name: Regen heute
+          - entity: sensor.ecowitt_24h_rain_10XXX
+            name: 24h Regen
+      - type: history-graph
+        title: Sonne / Licht / UV 24h
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - entity: sensor.ecowitt_uv_index_10XXX
+            name: UV
+          - entity: sensor.ecowitt_solar_radiation_10XXX
+            name: Solarstrahlung
+          - entity: sensor.ecowitt_solar_lux_10XXX
+            name: Helligkeit
+      - type: history-graph
+        title: Außenbereich Temperaturen 24h
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - entity: sensor.ecowitt_outdoor_temp_10XXX
+            name: WS90 außen
+          - entity: sensor.XXXXesphomewp_outdoor_temperature
+            name: Wärmepumpe außen
+          - entity: sensor.ecowitt_temperature_indoor
+            name: Gartenhütte
+          - entity: sensor.XXXX_thm_XXXXXXX79_temperature
+            name: Zählerschrank
+          - entity: sensor.ecowitt_dewpoint_10XXX
+            name: Taupunkt
+          - entity: sensor.ecowitt_tf_7aef
+            name: Poolwasser
+          - entity: sensor.ecowitt_temperature_fx
+            name: Brunnenschacht
+          - entity: sensor.ecowitt_temperature_cX
+            name: Poolpumpe
+      - type: history-graph
+        title: Gebäude Temperaturen 24h
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - entity: sensor.thm_62XXXXX71
+            name: Keller
+          - entity: sensor.thm_XXXXX7317
+            name: Erdgeschoss
+          - entity: sensor.thm_62XXXXXXX
+            name: Obergeschoss
+      - type: history-graph
+        title: Zusatzsensoren Feuchte / Boden 24h
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - entity: sensor.ecowitt_soil_moisture_f1XXX
+            name: Bodenfeuchte
+          - entity: sensor.ecowitt_humidity_fx
+            name: Brunnenschacht Feuchte
+          - entity: sensor.ecowitt_humidity_cX
+            name: Poolpumpe Feuchte
+      - type: grid
+        title: Temperaturübersicht
+        columns: 2
+        square: false
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_outdoor_temp_10XXX
+            primary: WS90 außen
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.XXXXesphomewp_outdoor_temperature
+            primary: Wärmepumpe außen
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:heat-pump
+            icon_color: teal
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_temperature_indoor
+            primary: Gartenhütte
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:home-thermometer-outline
+            icon_color: brown
+          - type: custom:mushroom-template-card
+            entity: sensor.XXXX_thm_XXXXXXX79_temperature
+            primary: Zählerschrank
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:meter-electric
+            icon_color: orange
+          - type: custom:mushroom-template-card
+            entity: sensor.thm_62XXXXX71
+            primary: Keller
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer-chevron-down
+            icon_color: blue
+          - type: custom:mushroom-template-card
+            entity: sensor.thm_XXXXX7317
+            primary: Erdgeschoss
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:home-floor-0
+            icon_color: green
+          - type: custom:mushroom-template-card
+            entity: sensor.thm_62XXXXXXX
+            primary: Obergeschoss
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:home-floor-1
+            icon_color: amber
+          - type: custom:mushroom-template-card
+            entity: sensor.ecowitt_dewpoint_10XXX
+            primary: Taupunkt
+            secondary: '{{ states(entity) }} °C'
+            icon: mdi:thermometer-water
+            icon_color: cyan
+  - title: Radar
+    path: radar
+    icon: mdi:weather-rainy
+    cards:
+      - type: custom:mushroom-title-card
+        title: Regenradar
+        subtitle: GPS-zentriert über Entity mit latitude/longitude Attributen
+      - type: custom:weather-radar-card
+        card_title: Regenradar
+        frame_count: 8
+        frame_delay: 500
+        zoom_level: 7
+        center_latitude: data.attributes.latitude
+        center_longitude: data.attributes.longitude
+        marker_latitude: data.attributes.latitude
+        marker_longitude: data.attributes.longitude
+        show_marker: true
+        show_range: true
+        show_zoom: true
+        show_recenter: true
+        show_playback: true
+        map_style: light
+      - type: custom:windrose-card
+        title: Windrose 24h
+        data_period:
+          period_back: '-24h'
+        wind_direction_entity:
+          entity: sensor.ecowitt_wind_direction_10XXX
+        windspeed_entities:
+          - entity: sensor.ecowitt_wind_speed_10XXX
+            name: Wind
+            speed_range_beaufort: false
+            output_speed_unit: kph
+            speed_range_step: 5
+            speed_range_max: 50
+        windspeed_bar_location: bottom
+      - type: entities
+        title: Regen kompakt
+        show_header_toggle: false
+        entities:
+          - entity: sensor.ecowitt_rain_rate_10XXX
+            name: Regenrate
+          - entity: sensor.ecowitt_rain_event_10XXX
+            name: Regenereignis
+          - entity: sensor.ecowitt_24h_rain_10XXX
+            name: 24h Regen
+          - entity: sensor.ecowitt_daily_rain_10XXX
+            name: Regen heute
+          - entity: sensor.ecowitt_weekly_rain_10XXX
+            name: Regen Woche
+          - entity: sensor.ecowitt_monthly_rain_10XXX
+            name: Regen Monat
+      - type: entities
+        title: Wind kompakt
+        show_header_toggle: false
+        entities:
+          - entity: sensor.ecowitt_wind_speed_10XXX
+            name: Wind
+          - entity: sensor.ecowitt_wind_gust_10XXX
+            name: Böe
+          - entity: sensor.ecowitt_max_daily_gust_10XXX
+            name: Max. Tagesböe
+          - entity: sensor.ecowitt_wind_direction_10XXX
+            name: Windrichtung
+          - entity: sensor.ecowitt_wind_direction_avg_10XXX
+            name: Windrichtung Ø
