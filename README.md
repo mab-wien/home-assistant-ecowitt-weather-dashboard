@@ -53,7 +53,7 @@ Install the following via HACS:
 ### 2. Add the dashboard YAML
 Create a manual Lovelace dashboard or open the raw configuration editor and paste the contents of:
 
-- `weather_dashboard_final.yaml`
+- `weather_dashboard.yaml`
 
 ### 3. Verify your entity IDs
 This dashboard uses the following entity groups:
